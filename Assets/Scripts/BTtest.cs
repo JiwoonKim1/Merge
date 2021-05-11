@@ -22,7 +22,6 @@ public class BTtest : MonoBehaviour
     {
         pressedText.text = pushed.ToString();
 
-        //connected = InputSystem.devices.Count;
         connected = countMyDevice();
         connectedText.text = connected.ToString();
 
@@ -47,12 +46,6 @@ public class BTtest : MonoBehaviour
         }
 
         return cnt;
-    }
-
-    private void OnApplicationQuit()
-    {
-        Debug.Log("Application ending after " + Time.time + " seconds");
-        //GetComponent<writeCSV>().writeTimeLine();
     }
 
     public void onInputDeviceChange(InputDevice device, InputDeviceChange change)
@@ -84,22 +77,15 @@ public class BTtest : MonoBehaviour
 
     public void onEvent(InputEventPtr inputEvent, InputDevice device)
     {
-        float time = (float)Math.Round(inputEvent.time, 3);
-
         var keyboard = device as Keyboard;
         var mydevice = device as myDevice;
 
         if (keyboard != null)
         {
-            changePressedtext(time);
-
-            //Debug.Log("time: " + time + ", deviceID: " + device.deviceId);
-            //Debug.Log("keyboard");
+            changePressedtext();
         }
         if (mydevice != null)
         {
-
-            //Debug.Log("time: " + time + ", deviceID: " + device.deviceId);
             if (!flag)
             {
                 flag = true;
@@ -110,15 +96,13 @@ public class BTtest : MonoBehaviour
             if (mydevice.IsPressed())
             {
             }
-            changePressedtext(time);
+            changePressedtext();
         }
 
     }
 
-    private void changePressedtext(float time)
+    private void changePressedtext()
     {
-        //GetComponent<writeCSV>().writeTime(time);
-
         pushed += 1;
         if (pressedText != null) pressedText.text = pushed.ToString();
     }

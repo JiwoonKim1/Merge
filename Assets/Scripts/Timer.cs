@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,11 +15,20 @@ public class Timer : MonoBehaviour
 
     private float min = 0f;
     private float sec = 0f;
+    private bool flag = true;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        InputSystem.onEvent += onEvent;
+    }
+ 
     void Update()
     {
-        if (min == limit) SceneManager.LoadScene("End");
+        if (min == limit)
+        {
+            SceneManager.LoadScene("End");
+            GetComponent<writeCSV>().writeTimeLine();
+        }
 
         setTime();
     }
@@ -35,6 +46,26 @@ public class Timer : MonoBehaviour
         }
 
         secText.text = Math.Floor(sec).ToString();
+    }
+
+    public void onEvent(InputEventPtr inputEvent, InputDevice device)
+    {
+        var mydevice = device as myDevice;
+
+        if (mydevice != null)
+        {
+            if (!flag)
+            {
+                flag = true;
+                return;
+            }
+
+            flag = false;
+
+            GetComponent<writeCSV>().writeTime(min, sec);
+            Debug.Log("Pressed Time=> " + minText.text + ":" + secText.text);
+        }
+
     }
 }
 
