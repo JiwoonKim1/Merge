@@ -11,11 +11,15 @@ public class Timer : MonoBehaviour
 {
     public Text minText;
     public Text secText;
+
     public float limit = 1f;
+    public float startTime = 0f;
+    public float period = 0.1f;
 
     private float min = 0f;
     private float sec = 0f;
     private bool flag = true;
+    private int pressed = 0;
 
     private void Start()
     {
@@ -24,13 +28,16 @@ public class Timer : MonoBehaviour
  
     void Update()
     {
+        pressed = 0;
+
         if (min == limit)
         {
             SceneManager.LoadScene("End");
-            GetComponent<writeCSV>().writeTimeLine();
+            //GetComponent<writeCSV>().writeTimeLine();
         }
 
         setTime();
+        GetComponent<writeCSV>().writeRow(min, sec, pressed);
     }
 
     private void setTime()
@@ -45,7 +52,8 @@ public class Timer : MonoBehaviour
             minText.text = min.ToString();
         }
 
-        secText.text = Math.Floor(sec).ToString();
+        secText.text = Math.Round(sec, 3).ToString();
+        //secText.text = sec.ToString();
     }
 
     public void onEvent(InputEventPtr inputEvent, InputDevice device)
@@ -54,16 +62,19 @@ public class Timer : MonoBehaviour
 
         if (mydevice != null)
         {
-            if (!flag)
+            if (flag)
+            {
+                //GetComponent<writeCSV>().writeRow(min, sec, 1);
+                pressed = 1;
+                Debug.Log("Pressed Time=> " + minText.text + ":" + secText.text);
+                flag = false;
+            }
+            else
             {
                 flag = true;
                 return;
             }
-
-            flag = false;
-
-            GetComponent<writeCSV>().writeTime(min, sec);
-            Debug.Log("Pressed Time=> " + minText.text + ":" + secText.text);
+            
         }
 
     }

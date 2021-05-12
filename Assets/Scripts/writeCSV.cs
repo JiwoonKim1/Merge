@@ -6,13 +6,14 @@ using UnityEngine;
 public class writeCSV : MonoBehaviour
 {
     private CsvFileWriter writer;
-    private List<string> columns;
+    //private List<string> columns;
     private List<string> timeLine;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        columns = new List<string>() { "Time" }; //컬럼
+        //columns = new List<string>() { "Time" }; //컬럼
         timeLine = new List<string>();
 
         setFilePath();
@@ -30,8 +31,8 @@ public class writeCSV : MonoBehaviour
             Directory.CreateDirectory(dataPath + "BT");
 
         writer = new CsvFileWriter(dataPath + "BT/Result" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".csv");
-        writer.WriteRow(columns);
-        columns.Clear();
+        //writer.WriteRow(columns);
+        //columns.Clear();
     }
 
     //버튼 입력 발생할때마다 시간기록
@@ -46,5 +47,13 @@ public class writeCSV : MonoBehaviour
     public void writeTimeLine()
     {
         writer.WriteRow(timeLine);
+    }
+
+    public void writeRow(float min, float sec, int flag)
+    {
+        timeLine.Add(min + ":" + sec);
+        timeLine.Add(flag.ToString());
+        writer.WriteRow(timeLine);
+        timeLine.Clear();
     }
 }
