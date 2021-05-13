@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7363440563743984645
+--- !u!114 &-6254794921499667797
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: QuadL
+  m_Name: TempQuad
   m_Shader: {fileID: -6465566751694194690, guid: dcdd52f5f30990640960d70a91c27528, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -61,8 +61,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_7021360: 0
-    - Vector1_A2724CF0: 400
+    - Vector1_7021360: 1
+    - Vector1_A2724CF0: 3
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

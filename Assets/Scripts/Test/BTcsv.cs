@@ -14,7 +14,8 @@ public class BTcsv : MonoBehaviour
 {
     public Stopwatch timer;
     public Text timerText;
-    public string elapsedTime;
+
+    private string elapsedTime;
 
     private CsvFileWriter writer;
     private List<string> timeLine;
