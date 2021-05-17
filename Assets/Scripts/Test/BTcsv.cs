@@ -8,22 +8,19 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class BTcsv : MonoBehaviour
 {
     public Stopwatch timer;
     public Text timerText;
-
-    private string elapsedTime;
+    public int timeLimit = 2;
 
     private CsvFileWriter writer;
     private List<string> timeLine;
-    private bool flag = true;
-    private int pressed = 0;
     private List<Tuple<int, int>> records;
+    private bool flag = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         timer = new Stopwatch();
@@ -35,22 +32,17 @@ public class BTcsv : MonoBehaviour
 
         Debug.Log("Start" + timer.Elapsed);
         records = new List<Tuple<int, int>>();
-        //InvokeRepeating("countPressedButton", 1f, 1f);
-        //InvokeRepeating("setElapsed", 0f, 1f);
-        //InvokeRepeating("countPressedButton", 1f, 1f);
     }
 
     private void Update()
     {
         timerText.text = timer.Elapsed.ToString();
-        /*
-        InputSystem.onEvent += (eventPtr, device) =>
-        {
-            var mydevice = device as myDevice;
-            if (mydevice != null) Debug.Log("Update" + timer.Elapsed);
-        };
-        */
 
+        if(timer.Elapsed.Minutes >= timeLimit)
+        {
+            writeRecord();
+            SceneManager.LoadScene("End");
+        }
     }
 
     private void setFilePath()
@@ -70,17 +62,15 @@ public class BTcsv : MonoBehaviour
     public void onEvent(InputEventPtr inputEvent, InputDevice device)
     {
         var mydevice = device as myDevice;
-
+      
         if (mydevice != null)
         {
             if (!flag)
             {
                 flag = true;
-                //Debug.Log("Event2" + timer.Elapsed);
                 return;
             }
             flag = false;
-            pressed += 1;
 
             Debug.Log("Event1 --> " + (String.Format("{0:00}:{1:00}.{2:00}", timer.Elapsed.Minutes, timer.Elapsed.Seconds, timer.Elapsed.Milliseconds)));
 
@@ -90,54 +80,39 @@ public class BTcsv : MonoBehaviour
 
     }
 
-    private void setElapsed()
-    {
-        Debug.Log("write csv1" + timer.Elapsed);
-        elapsedTime = (String.Format("{0:00}:{1:00}", timer.Elapsed.Minutes, timer.Elapsed.Seconds));
-        timeLine.Add(elapsedTime);
-    }
-    private void countPressedButton()
-    {
-        //string elapsedTime = (String.Format("{0:00}:{1:00}", timer.Elapsed.Minutes, timer.Elapsed.Seconds));
-        //timeLine.Add(elapsedTime);
-        Debug.Log("write csv2" + timer.Elapsed);
-        timeLine.Add(pressed.ToString());
-        writer.WriteRow(timeLine);
-        timeLine.Clear();
-        pressed = 0;
-    }
-
-    private void OnApplicationQuit()
-    {
-        writeRecord();
-    }
-
+    //리스트에 저장된 버튼 이벤트 시간들을  전부 csv로 기록
     private void writeRecord()
     {
         int M = 0;
-        int S = 0;
-        int count = 0;
-
-        for (int i = 0; i < records.Count; i++)
+        int ptr = 0;
+        while(M < timeLimit)
         {
-            int mm = records[i].Item1;
-            int ss = records[i].Item2;
-
-            if (M != mm || S != ss)
+            for(int S = 0; S < 60; S++)
             {
-                writeRecrodRow(M, S, count);
-                M = mm;
-                S = ss;
-                count = 0;
+                int count = 0; 
+
+                for(;ptr < records.Count; ptr++)
+                {
+                    int s = records[ptr].Item2;
+
+                    if(S != s)
+                    {
+                        writeRecordRow(M, S, count);
+                        break;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
             }
 
-            count += 1;
+            M++;
 
         }
-        writeRecrodRow(M, S, count);
     }
 
-    private void writeRecrodRow(int m, int s, int cnt)
+    private void writeRecordRow(int m, int s, int cnt)
     {
         string str = (String.Format("{0:00}:{1:00}", m, s));
         timeLine.Add(str);
