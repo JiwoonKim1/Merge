@@ -13,7 +13,6 @@ using UnityEngine.SceneManagement;
 public class BTcsv : MonoBehaviour
 {
     public Stopwatch timer;
-    public Text timerText;
     public int timeLimit = 2;
 
     private CsvFileWriter writer;
@@ -36,8 +35,6 @@ public class BTcsv : MonoBehaviour
 
     private void Update()
     {
-        timerText.text = timer.Elapsed.ToString();
-
         if(timer.Elapsed.Minutes >= timeLimit)
         {
             writeRecord();
@@ -49,7 +46,7 @@ public class BTcsv : MonoBehaviour
     {
         var dataPath = Application.persistentDataPath + "/Data/";
 
-        //Debug.Log("Path_csv : " + dataPath);
+        Debug.Log("Path_csv : " + dataPath);
 
         if (!Directory.Exists(dataPath))
             Directory.CreateDirectory(dataPath);
@@ -85,19 +82,20 @@ public class BTcsv : MonoBehaviour
     {
         int M = 0;
         int ptr = 0;
-        while(M < timeLimit)
+       
+        while (M < timeLimit)
         {
             for(int S = 0; S < 60; S++)
             {
-                int count = 0; 
+                int count = 0;
 
-                for(;ptr < records.Count; ptr++)
+                for (; ptr < records.Count; ptr++)
                 {
                     int s = records[ptr].Item2;
 
-                    if(S != s)
+                    if (S != s)
                     {
-                        writeRecordRow(M, S, count);
+                        //writeRecordRow(M, S, count);
                         break;
                     }
                     else
@@ -105,11 +103,15 @@ public class BTcsv : MonoBehaviour
                         count++;
                     }
                 }
+
+                writeRecordRow(M, S, count);
+
             }
 
             M++;
 
         }
+
     }
 
     private void writeRecordRow(int m, int s, int cnt)

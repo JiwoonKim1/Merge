@@ -4982,7 +4982,7 @@ MonoBehaviour:
   respawnRadius1: 0.25
   respawnRadius2: 0.3
   starClipDistance: 0.7
-  camera: {fileID: 0}
+  camera: {fileID: 1149932954}
 --- !u!1 &185159298
 GameObject:
   m_ObjectHideFlags: 0
@@ -10195,4 +10195,4 @@ MonoBehaviour:
   respawnPoint1: 3
   respawnPoint2: 6
   starClipDistance: 0.7
-  camera: {fileID: 0}
+  camera: {fileID: 1149932954}
