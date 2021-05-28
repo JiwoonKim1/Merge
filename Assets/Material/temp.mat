@@ -58,9 +58,9 @@ Material:
     - _EnvironmentReflections: 1
     - _FadeEndY: -4
     - _FadeStartY: -2
-    - _FogEnd: 101
-    - _FogStart: 19
-    - _Frequency: 4
+    - _FogEnd: 40
+    - _FogStart: 20
+    - _Frequency: 17
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossinessSource: 0
@@ -69,14 +69,14 @@ Material:
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rotation: 0
+    - _Rotation: 90
     - _Shininess: 0
     - _Smoothness: 0.5
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
     - _SpecularHighlights: 1
-    - _Speed: 0
+    - _Speed: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
@@ -86,8 +86,8 @@ Material:
     - Color2: {r: 0.627913, g: 0.8773585, b: 0.5683517, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.6886792, g: 0.563071, b: 0.563071, a: 1}
-    - _Color1: {r: 1, g: 0.22327036, b: 0.22327036, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 1, g: 0, b: 0, a: 1}
+    - _Color2: {r: 0.28401098, g: 1, b: 0.22327036, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FadeToColor: {r: 0, g: 0, b: 0, a: 1}
     - _FogColor: {r: 0, g: 0, b: 0, a: 1}

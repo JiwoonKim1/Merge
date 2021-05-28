@@ -19,6 +19,7 @@ public class BTcsv : MonoBehaviour
     private List<string> timeLine;
     private List<Tuple<int, int>> records;
     private bool flag = true;
+    private bool flag2 = true;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class BTcsv : MonoBehaviour
     public void onEvent(InputEventPtr inputEvent, InputDevice device)
     {
         var mydevice = device as myDevice;
+        var mydevice2 = device as myDevice2;
       
         if (mydevice != null)
         {
@@ -72,6 +74,20 @@ public class BTcsv : MonoBehaviour
             Debug.Log("Event1 --> " + (String.Format("{0:00}:{1:00}.{2:00}", timer.Elapsed.Minutes, timer.Elapsed.Seconds, timer.Elapsed.Milliseconds)));
 
             Tuple<int,int> tuple = new Tuple<int, int>(timer.Elapsed.Minutes, timer.Elapsed.Seconds);
+            records.Add(tuple);
+        }
+        if (mydevice2 != null)
+        {
+            if (!flag2)
+            {
+                flag2 = true;
+                return;
+            }
+            flag2 = false;
+
+            Debug.Log("Event1 --> " + (String.Format("{0:00}:{1:00}.{2:00}", timer.Elapsed.Minutes, timer.Elapsed.Seconds, timer.Elapsed.Milliseconds)));
+
+            Tuple<int, int> tuple = new Tuple<int, int>(timer.Elapsed.Minutes, timer.Elapsed.Seconds);
             records.Add(tuple);
         }
 
