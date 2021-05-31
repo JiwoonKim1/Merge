@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BalanceTest/Plane.unity
     guid: c120357c07470864cb77c05a20ce3372
-  - enabled: 1
-    path: Assets/Scenes/Ending/End.unity
-    guid: 11a4af596be795342abf9fa1c8d7cd06
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/BalanceTest/Stars.unity
     guid: 22911b7d498516c4abd76fecf044cdf4
