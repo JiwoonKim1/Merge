@@ -35,11 +35,13 @@ public class CloseStars : MonoBehaviour
 
     }
 
+    //각각의 particle의 위치를 지정
     private Vector3 setPos()
     {
         Vector3 pos = new Vector3(0, 0, Random.Range(respawnPoint1, respawnPoint2)) + Random.insideUnitSphere.normalized * Random.Range(respawnRadius1, respawnRadius2);
         return pos;
     }
+
     private void CreateStars()
     {
         points = new ParticleSystem.Particle[starsMax];
@@ -47,7 +49,7 @@ public class CloseStars : MonoBehaviour
         //카메라 위치에서 반지름 starDistance인 구 안에 별이 생성됨
         for (int i = 0; i < starsMax; i++)
         {
-            points[i].position = setPos();
+            points[i].position = setPos(); //각각의 particle의 위치를 지정
             points[i].color = new Color(1, 1, 1, 1);
             points[i].size = Random.Range(starSize1, starSize2);
         }

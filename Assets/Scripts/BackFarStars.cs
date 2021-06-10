@@ -32,14 +32,17 @@ public class BackFarStars : MonoBehaviour
     void Start()
     {
         starClipDistanceSqr = starClipDistance * starClipDistance;
+ 
     }
 
     private Vector3 setPos()
     {
         Vector3 pos = new Vector3(0, 0, Random.Range(respawnPoint1, respawnPoint2));
         pos += Random.onUnitSphere.normalized * Random.Range(respawnRadius1, respawnRadius2);
+        //Random.
         return pos;
     }
+
     private void CreateStars()
     {
         points = new ParticleSystem.Particle[starsMax];
@@ -70,7 +73,8 @@ public class BackFarStars : MonoBehaviour
                 points[i].color = new Color(1, 1, 1, 1);
             }
 
-            //별이 카메라에 가까이 왔을때 알파값을 줄임, 너무 커 보이는 것을 방지하기 위해
+            /*
+            //별이 backPoint에 가까이 왔을때 알파값을 줄임, 너무 커 보이는 것을 방지하기 위해
             if ((points[i].position - backPoint.transform.position).sqrMagnitude <= starClipDistanceSqr)
             {
                 float percent = (points[i].position - backPoint.transform.position).sqrMagnitude / starClipDistanceSqr;
@@ -78,6 +82,7 @@ public class BackFarStars : MonoBehaviour
                 points[i].color = new Color(1, 1, 1, percent);
                 points[i].size *= percent;
             }
+            */
 
             //별이 카메라에 가까이 왔을때 알파값을 줄임, 너무 커 보이는 것을 방지하기 위해
             if ((points[i].position - camera.transform.position).sqrMagnitude <= starClipDistanceSqr)
@@ -86,6 +91,18 @@ public class BackFarStars : MonoBehaviour
 
                 points[i].color = new Color(1, 1, 1, percent);
                 points[i].size *= percent;
+            }
+
+            //별이 카메라에서 멀어졌을때 알파값을 높임, 아예 사라지는 것을 방지하기 위해
+            if ((camera.transform.position - points[i].position).sqrMagnitude >= starClipDistanceSqr)
+            {
+                float percent = (points[i].position - camera.transform.position).sqrMagnitude / starClipDistanceSqr;
+
+                //points[i].color = new Color(1, 1, 1, percent);
+                //points[i].size *= percent;
+
+                points[i].size = Random.Range(starSize1, starSize2);
+                points[i].color = new Color(1, 1, 1, 1);
             }
 
         }
