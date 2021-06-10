@@ -1022,3 +1022,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressedText: {fileID: 1013953089}
   connectedText: {fileID: 215251768}
+  Plane: 282
+  Stripe: 283
+  Stars: 284

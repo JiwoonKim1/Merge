@@ -13,6 +13,10 @@ public class BTtest : MonoBehaviour
     [SerializeField] private Text pressedText;
     [SerializeField] private Text connectedText;
 
+    public KeyCode Plane;
+    public KeyCode Stripe;
+    public KeyCode Stars;
+
     private int pushed = 0;
     private int connected = 0;
     private bool flag = true;
@@ -33,7 +37,10 @@ public class BTtest : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey) SceneManager.LoadScene("Plane");
+        if (Input.GetKeyDown(Plane)) SceneManager.LoadScene("Plane");
+        else if (Input.GetKeyDown(Stripe)) SceneManager.LoadScene("VerticalStripe");
+        else if (Input.GetKeyDown(Stars)) SceneManager.LoadScene("Stars");
+
     }
 
     private int countMyDevice()

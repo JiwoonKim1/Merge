@@ -150,7 +150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177711919}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fbebb4f6b70bd5428a6603184a98181, type: 3}
   m_Name: 
@@ -4967,7 +4967,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177711919}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32d9b49c4fcca3b4b8b844e9a4e10b73, type: 3}
   m_Name: 
@@ -5001,7 +5001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &185159299
 Transform:
   m_ObjectHideFlags: 0
@@ -5183,6 +5183,7 @@ GameObject:
   - component: {fileID: 1149932953}
   - component: {fileID: 1149932956}
   - component: {fileID: 1149932957}
+  - component: {fileID: 1149932958}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5335,6 +5336,19 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Rotation
       m_Flags: 0
+--- !u!114 &1149932958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149932952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a1c5717951454478063322572afae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeLimit: 1
 --- !u!1 &1702851340
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,7 +5390,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702851340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12aec6d92f1926641a2615477a72db80, type: 3}
   m_Name: 
@@ -10180,7 +10194,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702851340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51c9ae4e929fb4c48b6e42cf611d36e7, type: 3}
   m_Name: 
