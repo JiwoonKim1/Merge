@@ -13,9 +13,12 @@ public class BTtest : MonoBehaviour
     [SerializeField] private Text pressedText;
     [SerializeField] private Text connectedText;
 
-    public KeyCode Plane;
-    public KeyCode Stripe;
-    public KeyCode Stars;
+    public KeyCode CubeForward;
+    public KeyCode CubeBackward;
+    public KeyCode StripeUpdown;
+    public KeyCode StripeLeftright;
+    public KeyCode StarForward;
+    public KeyCode StarBackward;
 
     private int pushed = 0;
     private int connected = 0;
@@ -37,9 +40,12 @@ public class BTtest : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(Plane)) SceneManager.LoadScene("Plane");
-        else if (Input.GetKeyDown(Stripe)) SceneManager.LoadScene("VerticalStripe");
-        else if (Input.GetKeyDown(Stars)) SceneManager.LoadScene("Stars");
+        if (Input.GetKeyDown(CubeForward)) SceneManager.LoadScene("CubeForward");
+        else if (Input.GetKeyDown(CubeBackward)) SceneManager.LoadScene("CubeBackward");
+        else if (Input.GetKeyDown(StripeUpdown)) SceneManager.LoadScene("StripeUpdown");
+        else if (Input.GetKeyDown(StripeLeftright)) SceneManager.LoadScene("StripeLeftright");
+        else if (Input.GetKeyDown(StarForward)) SceneManager.LoadScene("StarForward");
+        else if (Input.GetKeyDown(StarBackward)) SceneManager.LoadScene("StarBackward");
 
     }
 

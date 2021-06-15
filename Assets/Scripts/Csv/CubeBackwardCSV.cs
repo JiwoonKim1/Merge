@@ -9,7 +9,7 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 
-public class BalanceCSV : MonoBehaviour
+public class CubeBackwardCSV : MonoBehaviour
 {
     public float limitSec = 60f; //초 단위 지정 
     public float intervalSec = 0.1f; //초 단위 지정, 1f=1초, 0.1f=100밀리초
@@ -20,7 +20,6 @@ public class BalanceCSV : MonoBehaviour
     public Stopwatch stopwatch;
     private TimeSpan timetaken;
     private CsvFileWriter writer;
-    private string projectName;
 
     private bool flag = true;
     private bool flag2 = true;
@@ -36,12 +35,10 @@ public class BalanceCSV : MonoBehaviour
 
         records = new List<TimeSpan>();
 
-        projectName = SceneManager.GetActiveScene().name;
-        Debug.Log("projectName" + projectName);
-
         row = new List<string>();
-        row.Add("time");
-        row.Add("count");
+        row.Add("SystemTime");
+        row.Add("StartTime");
+        row.Add("Count");
         writer.WriteRow(row);
         row.Clear();
 
@@ -76,10 +73,10 @@ public class BalanceCSV : MonoBehaviour
         if (!Directory.Exists(dataPath))
             Directory.CreateDirectory(dataPath);
 
-        if (!Directory.Exists(dataPath + projectName))
-            Directory.CreateDirectory(dataPath + projectName);
+        if (!Directory.Exists(dataPath + "/Cube(backward)"))
+            Directory.CreateDirectory(dataPath + "/Cube(backward)");
 
-        writer = new CsvFileWriter(dataPath + projectName + "/BlueTooth" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".csv");
+        writer = new CsvFileWriter(dataPath + "/Cube(backward)" + "/BlueTooth" + System.DateTime.Now.ToString("yyyyMMddHHmm") + ".csv");
     }
 
     public void onEvent(InputEventPtr inputEvent, InputDevice device)
@@ -100,7 +97,7 @@ public class BalanceCSV : MonoBehaviour
             timetaken = stopwatch.Elapsed;
             records.Add(timetaken);
 
-            Debug.Log("Event --> "+timetaken.ToString());
+            Debug.Log("Event --> " + timetaken.ToString());
         }
         if (mydevice2 != null)
         {
@@ -170,7 +167,7 @@ public class BalanceCSV : MonoBehaviour
             }
 
             writeRecordRow(before, cnt);
-            
+
             n++;
             before = TimeSpan.FromSeconds(intervalSec * n);
             after = TimeSpan.FromSeconds(intervalSec * (n + 1));

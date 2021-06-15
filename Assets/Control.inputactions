@@ -1,0 +1,55 @@
+{
+    "name": "Control",
+    "maps": [
+        {
+            "name": "Button",
+            "id": "50942955-4b51-496f-b9ba-b2dc6e45861e",
+            "actions": [
+                {
+                    "name": "Button Push",
+                    "type": "Button",
+                    "id": "1a47ad60-f9be-4f24-aab9-45c216d785e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d54d0abf-1b02-4b66-80ee-19d52541c605",
+                    "path": "<myDevice>/button",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button Push",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a313be6-b497-45a1-8996-42157b84e7fc",
+                    "path": "<myDevice2>/button",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button Push",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c026825-ce03-4ce2-94d0-d3d0a0bcb2b5",
+                    "path": "<myDevice3>/button",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button Push",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

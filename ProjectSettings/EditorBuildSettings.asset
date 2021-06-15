@@ -9,14 +9,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Ready/BTtest.unity
     guid: 2be868e8100af98499aa5a4292d38c7c
   - enabled: 1
-    path: Assets/Scenes/BalanceTest/Plane.unity
-    guid: c120357c07470864cb77c05a20ce3372
+    path: Assets/Scenes/BalanceTest/CubeForward.unity
+    guid: 1d40378516100174b9910072fb27ea91
   - enabled: 1
-    path: Assets/Scenes/BalanceTest/Stars.unity
-    guid: 22911b7d498516c4abd76fecf044cdf4
+    path: Assets/Scenes/BalanceTest/CubeBackward.unity
+    guid: a848e5a271a64184c94dbffa291d486f
   - enabled: 1
-    path: Assets/Scenes/BalanceTest/VerticalStripe.unity
-    guid: d768c72372834dc44b1956b0257a5b77
+    path: Assets/Scenes/BalanceTest/StripeUpdown.unity
+    guid: f66bdf46c03e33c47b15791901a97397
+  - enabled: 1
+    path: Assets/Scenes/BalanceTest/StripeLeftright.unity
+    guid: 86f7e67d69839ab4da71d0236ac3dff7
+  - enabled: 1
+    path: Assets/Scenes/BalanceTest/StarForward.unity
+    guid: 7497814ff6dd0104db7ebefc37188307
+  - enabled: 1
+    path: Assets/Scenes/BalanceTest/StarBackward.unity
+    guid: 4c5cfbfe33099374a9e3429e0aac3d26
   - enabled: 1
     path: Assets/Scenes/Ending/End.unity
     guid: 11a4af596be795342abf9fa1c8d7cd06

@@ -1,3 +1,0 @@
-test : 로컬 변경 잇었음 + origin/starscene: 변경
-test : pull 하려니 로컬과 오리진 충돌중이 상황
-//해결되면 end 씬과 폴더관리가 어떻게 되었는지 확인할것
